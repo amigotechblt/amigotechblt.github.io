@@ -189,6 +189,13 @@
 	@media (max-width: 640px){
 	  form .cols-3{ grid-template-columns: 1fr; }
 	}
+	/* Mobile: só logo visível, sem menu */
+	@media (max-width: 768px){
+	  .menu{ display:none !important; }
+	  .nav{ padding:.6rem 0; }
+	  .brand__logo-img{ height:32px; }
+	  .brand__name{ font-size:1rem; }
+	}
   </style>
 
   <script>
