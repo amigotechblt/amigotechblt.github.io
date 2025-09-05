@@ -110,6 +110,44 @@
     /* Footer */
     footer{padding:2rem 0; border-top:1px solid #eaeaea}
     .muted{color:#6b7280; font-size:.95rem}
+
+	/* ===== Ajustes MOBILE sem afetar desktop ===== */
+	img { max-width: 100%; height: auto; } /* evita imagens estourarem */
+
+	@media (max-width: 1024px){
+	  .hero__inner{ grid-template-columns: 1fr; padding: 2.2rem 0; }
+	}
+
+	@media (max-width: 768px){
+	  .container{ width: 94%; }
+	  h1{ font-size: clamp(1.6rem, 6vw, 2.2rem); }
+	  h2{ font-size: clamp(1.3rem, 4.8vw, 1.7rem); }
+	  .tagline{ font-size: 1rem; }
+
+	  /* Header compacto */
+	  .nav{ padding: .6rem 0; }
+	  .brand__logo-img{ height: 32px; }
+	  .brand__name{ font-size: 1rem; }
+	  .menu{ gap:.5rem; flex-wrap: wrap; overflow-x:auto; white-space: nowrap; }
+
+	  /* Hero e ondas */
+	  .wifi-waves{ inset: auto -30% -35% -30%; opacity:.28; }
+
+	  /* Grades viram 2 colunas */
+	  .cards{ grid-template-columns: 1fr 1fr; gap:.8rem; }
+	  .cols-3{ grid-template-columns: 1fr; }
+
+	  /* Botões e inputs mais confortáveis */
+	  .cta, .btn{ padding: .7rem .95rem; font-size:.95rem; }
+	  input, textarea, select{ font-size: 16px; } /* evita zoom no iOS */
+	}
+
+	@media (max-width: 480px){
+	  /* Em telas muito pequenas, 1 coluna para cards */
+	  .cards{ grid-template-columns: 1fr; }
+	  .menu a{ padding:.4rem .55rem; font-size:.9rem; }
+	}
+
   </style>
 
   <script>
