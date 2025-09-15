@@ -641,5 +641,71 @@
   </div>
 </div>
 
+<!-- LINK NO RODAPÉ -->
+<p class="muted">
+  © <span id="year"></span> Amigo Tech ·
+  <a href="#" id="privacy-open">Política de Privacidade</a>
+</p>
+
+<!-- CSS DO MODAL -->
+<style>
+.modal-backdrop{position:fixed;inset:0;padding:1rem;background:rgba(0,0,0,.55);
+display:none;align-items:center;justify-content:center;z-index:9999}
+.modal-backdrop.open{display:flex}
+.modal{background:#fff;color:#333;width:min(800px,92%);max-height:85vh;overflow:auto;
+border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.25);padding:1rem 1.25rem}
+.modal header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.25rem}
+.modal h3{margin:0}
+.modal .close{border:0;background:#eef2f7;border-radius:8px;cursor:pointer;padding:.25rem .6rem}
+.modal .close:hover{background:#e2e8f0}
+.modal .content ul{margin:.25rem 0 .75rem 1.25rem}
+</style>
+
+<!-- HTML DO MODAL -->
+<div id="privacy-modal" class="modal-backdrop" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
+    <header>
+      <h3 id="privacy-title">Política de Privacidade – Amigo Tech</h3>
+      <button type="button" class="close" id="privacy-close" aria-label="Fechar">×</button>
+    </header>
+    <div class="content">
+      <p>A Amigo Tech respeita a sua privacidade em conformidade com a LGPD.</p>
+      <h4>1. Dados coletados</h4>
+      <ul><li>Nome;</li><li>Telefone;</li><li>Local de atendimento.</li></ul>
+      <h4>2. Finalidade</h4>
+      <ul><li>Agendamento e execução;</li><li>Coleta/devolução.</li></ul>
+      <h4>3. Retenção</h4>
+      <p>Eliminação após conclusão do serviço/devolução.</p>
+      <h4>4. Compartilhamento</h4><p>Não compartilhamos.</p>
+      <h4>5. Direitos</h4><p>Acesso, correção, eliminação (LGPD).</p>
+      <h4>6. Compromisso</h4><p>Segurança, transparência e minimização.</p>
+    </div>
+  </div>
+</div>
+
+<!-- JS (garante DOM pronto e IDs corretos) -->
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const openLink = document.getElementById('privacy-open');
+  const modal    = document.getElementById('privacy-modal');
+  const closeBtn = document.getElementById('privacy-close');
+  if(!openLink || !modal || !closeBtn) return;
+
+  function openModal(e){ e&&e.preventDefault();
+    modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden'; closeBtn.focus();
+  }
+  function closeModal(){
+    modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow=''; openLink.focus();
+  }
+  openLink.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'&&modal.classList.contains('open')) closeModal(); });
+});
+</script>
+
+	
 </body>
 </html>
